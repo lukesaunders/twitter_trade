@@ -1,0 +1,14 @@
+var sys = require('sys');
+
+var Twitter = require('evented-twitter').Twitter;
+var t = new Twitter('username', 'password');
+t.userTimeline('json', null, function(result) {
+	// The response is not parsed for you
+	try {
+	    json = JSON.parse(result);
+	} catch(e) {}
+
+	sys.puts(sys.inspect(json));
+    });
+
+sys.puts('Calling ' + t.lastAPICall);
